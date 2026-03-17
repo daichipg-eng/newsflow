@@ -1,0 +1,67 @@
+name: Daily News Update
+
+on:
+  schedule:
+    # 毎日 JST 8:00 (UTC 23:00 前日) に実行
+    - cron: '0 23 * * *'
+  workflow_dispatch: # 手動実行も可能
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  fetch-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch news
+        env:
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
+        run: node scripts/fetch-news.js
+
+      - name: Build static site
+        run: |
+          cp data/news-cache.json public/data.json
+          cat > next.config.mjs << 'EOF'
+          const nextConfig = { output: "export", images: { unoptimized: true } };
+          export default nextConfig;
+          EOF
+          cat > app/api/news/route.js << 'EOF'
+          export const dynamic = 'force-static';
+          export async function GET() { return new Response('static'); }
+          EOF
+          cat > app/api/summarize/route.js << 'EOF'
+          export const dynamic = 'force-static';
+          export async function GET() { return new Response('static'); }
+          EOF
+          npx next build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

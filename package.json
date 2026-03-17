@@ -1,0 +1,20 @@
+{
+  "name": "news",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "fetch": "node scripts/fetch-news.js",
+    "build:static": "node scripts/build-static.js",
+    "translate": "node scripts/translate-cache.js",
+    "deploy": "npm run fetch && npm run build:static"
+  },
+  "dependencies": {
+    "google-translate-api-x": "^10.7.2",
+    "next": "16.1.7",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  }
+}
