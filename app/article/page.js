@@ -56,7 +56,18 @@ function ArticleContent() {
         body: JSON.stringify({ title: article.title, description: article.description, source: article.source }),
       });
       const data = await res.json();
-      if (data.summary) setSummary(data.summary);
+      if (data.summary) {
+        setSummary(data.summary);
+        // Gemini API使用量をlocalStorageに記録
+        const today = new Date().toISOString().slice(0, 10);
+        const key = "gemini_usage";
+        let usage = {};
+        try { usage = JSON.parse(localStorage.getItem(key) || "{}"); } catch {}
+        if (usage.date !== today) usage = { date: today, count: 0 };
+        usage.count += 1;
+        localStorage.setItem(key, JSON.stringify(usage));
+        localStorage.setItem("gemini_today_count", String(usage.count));
+      }
       else setSummaryError(data.error || "要約に失敗しました");
     } catch {
       setSummaryError("要約はローカル環境でのみ利用できます");

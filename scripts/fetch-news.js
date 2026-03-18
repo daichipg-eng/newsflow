@@ -25,6 +25,7 @@ if (!NEWS_API_KEY) {
 
 const BASE_URL = "https://newsapi.org/v2";
 const CACHE_PATH = path.join(__dirname, "..", "data", "news-cache.json");
+const STATS_PATH = path.join(__dirname, "..", "data", "api-stats.json");
 
 // カテゴリ分類
 function categorize(text) {
@@ -239,8 +240,45 @@ async function main() {
   const publicData = path.join(__dirname, "..", "public", "data.json");
   fs.copyFileSync(CACHE_PATH, publicData);
 
+  // API使用量を記録
+  let stats = { daily: [], totalRequests: 0 };
+  if (fs.existsSync(STATS_PATH)) {
+    try { stats = JSON.parse(fs.readFileSync(STATS_PATH, "utf-8")); } catch {}
+  }
+
+  const today = new Date().toISOString().slice(0, 10);
+  const todayEntry = stats.daily.find((d) => d.date === today);
+  const requestsUsed = 3;
+
+  if (todayEntry) {
+    todayEntry.requests += requestsUsed;
+    todayEntry.fetches += 1;
+    todayEntry.articles += newArticles.length;
+  } else {
+    stats.daily.push({
+      date: today,
+      requests: requestsUsed,
+      fetches: 1,
+      articles: newArticles.length,
+    });
+  }
+
+  // 直近30日分だけ保持
+  stats.daily = stats.daily.slice(-30);
+  stats.totalRequests = stats.daily.reduce((sum, d) => sum + d.requests, 0);
+  stats.lastFetched = new Date().toISOString();
+  stats.todayRemaining = 100 - (todayEntry ? todayEntry.requests : requestsUsed);
+  stats.newsApiLimit = 100;
+  stats.articlesTotal = merged.length;
+
+  fs.writeFileSync(STATS_PATH, JSON.stringify(stats, null, 2), "utf-8");
+
+  // public/api-stats.json にもコピー
+  const publicStats = path.join(__dirname, "..", "public", "api-stats.json");
+  fs.copyFileSync(STATS_PATH, publicStats);
+
   console.log(`\n✓ ${newArticles.length}件の新しい記事を追加（合計${merged.length}件）`);
-  console.log(`  NewsAPI: 3リクエスト消費`);
+  console.log(`  NewsAPI: ${requestsUsed}リクエスト消費（本日残り: ${stats.todayRemaining}/100）`);
   console.log(`  Google翻訳: 無料（制限なし）`);
   console.log(`  保存先: ${CACHE_PATH}`);
 }

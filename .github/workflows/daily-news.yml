@@ -45,6 +45,7 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: /newsflow
         run: |
           cp data/news-cache.json public/data.json
+          cp data/api-stats.json public/api-stats.json 2>/dev/null || true
           printf 'const nextConfig = { output: "export", images: { unoptimized: true }, basePath: "/newsflow" };\nexport default nextConfig;\n' > next.config.mjs
           echo 'export const dynamic = "force-static"; export async function GET() { return new Response("static"); }' > app/api/news/route.js
           echo 'export const dynamic = "force-static"; export async function GET() { return new Response("static"); }' > app/api/summarize/route.js

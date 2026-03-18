@@ -13,6 +13,8 @@ export default function NewsAggregator() {
   const [loading, setLoading] = useState(true);
   const [dataSource, setDataSource] = useState("");
   const [lastFetched, setLastFetched] = useState(null);
+  const [apiStats, setApiStats] = useState(null);
+  const [showStats, setShowStats] = useState(false);
 
   useEffect(() => {
     async function fetchNews() {
@@ -47,6 +49,16 @@ export default function NewsAggregator() {
       setLoading(false);
     }
     fetchNews();
+
+    // API使用量を取得
+    async function fetchStats() {
+      try {
+        const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
+        const res = await fetch(`${base}/api-stats.json`);
+        if (res.ok) setApiStats(await res.json());
+      } catch {}
+    }
+    fetchStats();
   }, []);
 
   const filtered = articles.filter((a) => {
@@ -80,7 +92,7 @@ export default function NewsAggregator() {
       >
         <div style={{ maxWidth: "960px", margin: "0 auto" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
-            <div style={{ display: "flex", alignItems: "baseline", gap: "12px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
               <h1
                 style={{
                   margin: 0,
@@ -96,6 +108,23 @@ export default function NewsAggregator() {
                 <span style={{ fontSize: "11px", color: "#475569", fontFamily: "var(--font-jetbrains-mono), monospace" }}>
                   MOCK
                 </span>
+              )}
+              {apiStats && (
+                <button
+                  onClick={() => setShowStats(!showStats)}
+                  style={{
+                    fontSize: "11px",
+                    fontFamily: "var(--font-jetbrains-mono), monospace",
+                    color: apiStats.todayRemaining > 20 ? "#22c55e" : apiStats.todayRemaining > 5 ? "#eab308" : "#ef4444",
+                    background: "none",
+                    border: `1px solid ${apiStats.todayRemaining > 20 ? "#16532d" : apiStats.todayRemaining > 5 ? "#713f12" : "#7f1d1d"}`,
+                    borderRadius: "4px",
+                    padding: "2px 8px",
+                    cursor: "pointer",
+                  }}
+                >
+                  API {apiStats.todayRemaining}/100
+                </button>
               )}
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "2px", background: "#0f0f1a", borderRadius: "8px", padding: "3px", border: "1px solid #1a1a2e" }}>
@@ -169,6 +198,58 @@ export default function NewsAggregator() {
               </button>
             ))}
           </div>
+
+          {/* Stats panel */}
+          {showStats && apiStats && (
+            <div
+              style={{
+                marginTop: "12px",
+                padding: "12px 16px",
+                background: "#0f0f1a",
+                border: "1px solid #1a1a2e",
+                borderRadius: "8px",
+                fontSize: "12px",
+                fontFamily: "var(--font-jetbrains-mono), monospace",
+                color: "#94a3b8",
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "8px 24px",
+              }}
+            >
+              <div>
+                <span style={{ color: "#64748b" }}>NewsAPI 残り: </span>
+                <span style={{ color: apiStats.todayRemaining > 20 ? "#22c55e" : "#eab308", fontWeight: 700 }}>
+                  {apiStats.todayRemaining}/100
+                </span>
+              </div>
+              <div>
+                <span style={{ color: "#64748b" }}>記事数: </span>
+                <span style={{ color: "#e2e8f0" }}>{apiStats.articlesTotal}</span>
+              </div>
+              <div>
+                <span style={{ color: "#64748b" }}>最終取得: </span>
+                <span style={{ color: "#e2e8f0" }}>
+                  {new Date(apiStats.lastFetched).toLocaleString("ja-JP", { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" })}
+                </span>
+              </div>
+              <div>
+                <span style={{ color: "#64748b" }}>Gemini: </span>
+                <span style={{ color: "#e2e8f0" }}>
+                  {typeof window !== "undefined" ? localStorage.getItem("gemini_today_count") || "0" : "0"}/1500
+                </span>
+              </div>
+              {apiStats.daily && apiStats.daily.length > 1 && (
+                <div style={{ gridColumn: "1 / -1", borderTop: "1px solid #1a1a2e", paddingTop: "8px", marginTop: "4px" }}>
+                  <span style={{ color: "#64748b" }}>直近の取得: </span>
+                  {apiStats.daily.slice(-5).reverse().map((d) => (
+                    <span key={d.date} style={{ marginRight: "12px" }}>
+                      {d.date.slice(5)} <span style={{ color: "#475569" }}>({d.requests}req / {d.articles}件)</span>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </header>
 
