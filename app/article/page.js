@@ -21,7 +21,8 @@ function ArticleContent() {
       try {
         let articles = [];
         try {
-          const res = await fetch("/data.json");
+          const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
+          const res = await fetch(`${base}/data.json`);
           if (res.ok) {
             const data = await res.json();
             articles = data.articles || [];

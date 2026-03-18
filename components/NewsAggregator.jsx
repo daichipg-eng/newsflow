@@ -21,7 +21,8 @@ export default function NewsAggregator() {
         // まず静的data.jsonを試す、なければAPI Route
         let data;
         try {
-          const res = await fetch("/data.json");
+          const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
+          const res = await fetch(`${base}/data.json`);
           if (res.ok) {
             data = await res.json();
             data.source = "cache";

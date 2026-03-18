@@ -41,20 +41,13 @@ jobs:
         run: node scripts/fetch-news.js
 
       - name: Build static site
+        env:
+          NEXT_PUBLIC_BASE_PATH: /newsflow
         run: |
           cp data/news-cache.json public/data.json
-          cat > next.config.mjs << 'EOF'
-          const nextConfig = { output: "export", images: { unoptimized: true } };
-          export default nextConfig;
-          EOF
-          cat > app/api/news/route.js << 'EOF'
-          export const dynamic = 'force-static';
-          export async function GET() { return new Response('static'); }
-          EOF
-          cat > app/api/summarize/route.js << 'EOF'
-          export const dynamic = 'force-static';
-          export async function GET() { return new Response('static'); }
-          EOF
+          printf 'const nextConfig = { output: "export", images: { unoptimized: true }, basePath: "/newsflow" };\nexport default nextConfig;\n' > next.config.mjs
+          echo 'export const dynamic = "force-static"; export async function GET() { return new Response("static"); }' > app/api/news/route.js
+          echo 'export const dynamic = "force-static"; export async function GET() { return new Response("static"); }' > app/api/summarize/route.js
           npx next build
 
       - name: Upload artifact
