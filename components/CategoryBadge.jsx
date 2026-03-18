@@ -3,20 +3,19 @@
 import { CATEGORY_COLORS } from "@/lib/constants";
 
 export default function CategoryBadge({ category }) {
-  const c = CATEGORY_COLORS[category] || { bg: "#1a1a2e", text: "#94a3b8", border: "#2a2a3e" };
+  const c = CATEGORY_COLORS[category] || { bg: "#f2f2f7", text: "#8e8e93", border: "#d1d1d6" };
   return (
     <span
       style={{
         display: "inline-block",
-        padding: "2px 10px",
+        padding: "3px 10px",
         fontSize: "11px",
         fontWeight: 600,
-        letterSpacing: "0.05em",
-        borderRadius: "4px",
+        letterSpacing: "0.02em",
+        borderRadius: "12px",
         backgroundColor: c.bg,
         color: c.text,
-        border: `1px solid ${c.border}`,
-        textTransform: "uppercase",
+        border: "none",
       }}
     >
       {category}

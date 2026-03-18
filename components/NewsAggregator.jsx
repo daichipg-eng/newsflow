@@ -20,7 +20,6 @@ export default function NewsAggregator() {
     async function fetchNews() {
       setLoading(true);
       try {
-        // まず静的data.jsonを試す、なければAPI Route
         let data;
         try {
           const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -50,7 +49,6 @@ export default function NewsAggregator() {
     }
     fetchNews();
 
-    // API使用量を取得
     async function fetchStats() {
       try {
         const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -81,72 +79,73 @@ export default function NewsAggregator() {
       {/* Header */}
       <header
         style={{
-          borderBottom: "1px solid #1a1a2e",
-          padding: "20px 32px",
+          padding: "16px 20px 0",
           position: "sticky",
           top: 0,
-          backgroundColor: "rgba(8, 8, 15, 0.92)",
-          backdropFilter: "blur(12px)",
+          backgroundColor: "rgba(242, 242, 247, 0.88)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
           zIndex: 100,
         }}
       >
-        <div style={{ maxWidth: "960px", margin: "0 auto" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <h1
-                style={{
-                  margin: 0,
-                  fontSize: "22px",
-                  fontWeight: 900,
-                  letterSpacing: "-0.02em",
-                  color: "#f1f5f9",
-                }}
-              >
-                NewsFlow
-              </h1>
-              {dataSource === "mock" && (
-                <span style={{ fontSize: "11px", color: "#475569", fontFamily: "var(--font-jetbrains-mono), monospace" }}>
-                  MOCK
-                </span>
-              )}
+        <div style={{ maxWidth: "680px", margin: "0 auto" }}>
+          {/* Top row */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "14px" }}>
+            <h1 style={{ margin: 0, fontSize: "28px", fontWeight: 800, color: "#1c1c1e", letterSpacing: "-0.02em" }}>
+              ニュース
+            </h1>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              {/* Time toggle */}
+              <div style={{
+                display: "flex",
+                background: "#e5e5ea",
+                borderRadius: "8px",
+                padding: "2px",
+              }}>
+                {["today", "week"].map((mode) => (
+                  <button
+                    key={mode}
+                    onClick={() => setViewMode(mode)}
+                    style={{
+                      padding: "6px 14px",
+                      fontSize: "13px",
+                      fontWeight: 600,
+                      border: "none",
+                      borderRadius: "7px",
+                      cursor: "pointer",
+                      transition: "all 0.2s ease",
+                      backgroundColor: viewMode === mode ? "#fff" : "transparent",
+                      color: viewMode === mode ? "#1c1c1e" : "#8e8e93",
+                      boxShadow: viewMode === mode ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
+                    }}
+                  >
+                    {mode === "today" ? "今日" : "今週"}
+                  </button>
+                ))}
+              </div>
+              {/* Stats toggle */}
               {apiStats && (
                 <button
                   onClick={() => setShowStats(!showStats)}
+                  title={`API ${apiStats.todayRemaining}/100`}
                   style={{
-                    fontSize: "11px",
-                    fontFamily: "var(--font-jetbrains-mono), monospace",
-                    color: apiStats.todayRemaining > 20 ? "#22c55e" : apiStats.todayRemaining > 5 ? "#eab308" : "#ef4444",
-                    background: "none",
-                    border: `1px solid ${apiStats.todayRemaining > 20 ? "#16532d" : apiStats.todayRemaining > 5 ? "#713f12" : "#7f1d1d"}`,
-                    borderRadius: "4px",
-                    padding: "2px 8px",
+                    width: "32px",
+                    height: "32px",
+                    borderRadius: "50%",
+                    border: "none",
+                    backgroundColor: showStats ? "#e5e5ea" : "transparent",
                     cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "16px",
+                    color: "#8e8e93",
+                    transition: "background 0.2s",
                   }}
                 >
-                  API {apiStats.todayRemaining}/100
+                  ⚙
                 </button>
               )}
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "2px", background: "#0f0f1a", borderRadius: "8px", padding: "3px", border: "1px solid #1a1a2e" }}>
-              {["today", "week"].map((mode) => (
-                <button
-                  key={mode}
-                  onClick={() => setViewMode(mode)}
-                  style={{
-                    padding: "6px 16px",
-                    fontSize: "13px",
-                    fontWeight: 600,
-                    border: "none",
-                    borderRadius: "6px",
-                    cursor: "pointer",
-                    transition: "all 0.2s ease",
-                    backgroundColor: viewMode === mode ? "#1e293b" : "transparent",
-                    color: viewMode === mode ? "#e2e8f0" : "#64748b",
-                  }}
-                >
-                  {mode === "today" ? "今日" : "今週"}
-                </button>
-              ))}
             </div>
           </div>
 
@@ -154,47 +153,57 @@ export default function NewsAggregator() {
           <div style={{ marginBottom: "12px" }}>
             <input
               type="text"
-              placeholder="ニュースを検索..."
+              placeholder="検索"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
                 width: "100%",
                 padding: "10px 16px",
-                fontSize: "14px",
-                border: "1px solid #1a1a2e",
-                borderRadius: "8px",
-                backgroundColor: "#0f0f1a",
-                color: "#e2e8f0",
+                fontSize: "16px",
+                border: "none",
+                borderRadius: "12px",
+                backgroundColor: "#e5e5ea",
+                color: "#1c1c1e",
                 outline: "none",
-                transition: "border-color 0.2s ease",
+                transition: "box-shadow 0.2s ease",
               }}
-              onFocus={(e) => (e.target.style.borderColor = "#2563eb")}
-              onBlur={(e) => (e.target.style.borderColor = "#1a1a2e")}
+              onFocus={(e) => (e.target.style.boxShadow = "0 0 0 3px rgba(0,122,255,0.3)")}
+              onBlur={(e) => (e.target.style.boxShadow = "none")}
             />
           </div>
 
-          {/* Category tabs */}
-          <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
+          {/* Category tabs - horizontal scroll */}
+          <div style={{
+            display: "flex",
+            gap: "4px",
+            overflowX: "auto",
+            paddingBottom: "12px",
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+          }}>
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 style={{
-                  padding: "5px 14px",
-                  fontSize: "13px",
+                  padding: "7px 16px",
+                  fontSize: "14px",
                   fontWeight: activeCategory === cat ? 700 : 500,
-                  border: `1px solid ${activeCategory === cat ? "#2563eb" : "#1a1a2e"}`,
-                  borderRadius: "6px",
+                  border: "none",
+                  borderRadius: "20px",
                   cursor: "pointer",
+                  whiteSpace: "nowrap",
                   transition: "all 0.2s ease",
-                  backgroundColor: activeCategory === cat ? "#1e3a5f" : "transparent",
-                  color: activeCategory === cat ? "#38bdf8" : "#64748b",
+                  backgroundColor: activeCategory === cat ? "#1c1c1e" : "#e5e5ea",
+                  color: activeCategory === cat ? "#fff" : "#6e6e73",
                 }}
               >
                 {cat}
-                <span style={{ marginLeft: "6px", fontSize: "11px", opacity: 0.7 }}>
-                  {categoryCounts[cat]}
-                </span>
+                {categoryCounts[cat] > 0 && (
+                  <span style={{ marginLeft: "5px", fontSize: "12px", opacity: 0.7 }}>
+                    {categoryCounts[cat]}
+                  </span>
+                )}
               </button>
             ))}
           </div>
@@ -203,78 +212,79 @@ export default function NewsAggregator() {
           {showStats && apiStats && (
             <div
               style={{
-                marginTop: "12px",
-                padding: "12px 16px",
-                background: "#0f0f1a",
-                border: "1px solid #1a1a2e",
-                borderRadius: "8px",
-                fontSize: "12px",
-                fontFamily: "var(--font-jetbrains-mono), monospace",
-                color: "#94a3b8",
+                padding: "14px 16px",
+                background: "#fff",
+                borderRadius: "12px",
+                fontSize: "13px",
+                color: "#6e6e73",
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
-                gap: "8px 24px",
+                gap: "8px 20px",
+                marginBottom: "12px",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
               }}
             >
               <div>
-                <span style={{ color: "#64748b" }}>NewsAPI 残り: </span>
-                <span style={{ color: apiStats.todayRemaining > 20 ? "#22c55e" : "#eab308", fontWeight: 700 }}>
-                  {apiStats.todayRemaining}/100
-                </span>
-              </div>
-              <div>
-                <span style={{ color: "#64748b" }}>記事数: </span>
-                <span style={{ color: "#e2e8f0" }}>{apiStats.articlesTotal}</span>
-              </div>
-              <div>
-                <span style={{ color: "#64748b" }}>最終取得: </span>
-                <span style={{ color: "#e2e8f0" }}>
-                  {new Date(apiStats.lastFetched).toLocaleString("ja-JP", { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" })}
-                </span>
-              </div>
-              <div>
-                <span style={{ color: "#64748b" }}>Gemini: </span>
-                <span style={{ color: "#e2e8f0" }}>
-                  {typeof window !== "undefined" ? localStorage.getItem("gemini_today_count") || "0" : "0"}/1500
-                </span>
-              </div>
-              {apiStats.daily && apiStats.daily.length > 1 && (
-                <div style={{ gridColumn: "1 / -1", borderTop: "1px solid #1a1a2e", paddingTop: "8px", marginTop: "4px" }}>
-                  <span style={{ color: "#64748b" }}>直近の取得: </span>
-                  {apiStats.daily.slice(-5).reverse().map((d) => (
-                    <span key={d.date} style={{ marginRight: "12px" }}>
-                      {d.date.slice(5)} <span style={{ color: "#475569" }}>({d.requests}req / {d.articles}件)</span>
-                    </span>
-                  ))}
+                <span style={{ color: "#8e8e93", fontSize: "11px" }}>NewsAPI</span>
+                <div style={{ color: "#1c1c1e", fontWeight: 600, fontSize: "15px" }}>
+                  {apiStats.todayRemaining}
+                  <span style={{ color: "#8e8e93", fontWeight: 400, fontSize: "12px" }}> / 100</span>
                 </div>
-              )}
+              </div>
+              <div>
+                <span style={{ color: "#8e8e93", fontSize: "11px" }}>記事数</span>
+                <div style={{ color: "#1c1c1e", fontWeight: 600, fontSize: "15px" }}>
+                  {apiStats.articlesTotal}
+                </div>
+              </div>
+              <div>
+                <span style={{ color: "#8e8e93", fontSize: "11px" }}>最終取得</span>
+                <div style={{ color: "#1c1c1e", fontWeight: 600, fontSize: "15px" }}>
+                  {new Date(apiStats.lastFetched).toLocaleString("ja-JP", { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" })}
+                </div>
+              </div>
+              <div>
+                <span style={{ color: "#8e8e93", fontSize: "11px" }}>Gemini</span>
+                <div style={{ color: "#1c1c1e", fontWeight: 600, fontSize: "15px" }}>
+                  {typeof window !== "undefined" ? localStorage.getItem("gemini_today_count") || "0" : "0"}
+                  <span style={{ color: "#8e8e93", fontWeight: 400, fontSize: "12px" }}> / 1500</span>
+                </div>
+              </div>
             </div>
           )}
         </div>
       </header>
 
       {/* News list */}
-      <main style={{ maxWidth: "960px", margin: "0 auto" }}>
+      <main style={{ maxWidth: "680px", margin: "0 auto", padding: "0 20px" }}>
         {loading ? (
-          <div style={{ textAlign: "center", padding: "80px 20px", color: "#475569" }}>
+          <div style={{ textAlign: "center", padding: "80px 20px", color: "#8e8e93" }}>
             <p style={{ fontSize: "15px", fontWeight: 500 }}>読み込み中...</p>
           </div>
         ) : filtered.length === 0 ? (
-          <div style={{ textAlign: "center", padding: "80px 20px", color: "#475569" }}>
-            <div style={{ fontSize: "48px", marginBottom: "16px" }}>🔍</div>
-            <p style={{ fontSize: "15px", fontWeight: 500 }}>該当するニュースがありません</p>
-            <p style={{ fontSize: "13px", color: "#334155" }}>カテゴリや期間を変更してみてください</p>
+          <div style={{ textAlign: "center", padding: "80px 20px", color: "#8e8e93" }}>
+            <p style={{ fontSize: "17px", fontWeight: 600, marginBottom: "8px" }}>記事が見つかりません</p>
+            <p style={{ fontSize: "14px", color: "#aeaeb2" }}>カテゴリや期間を変更してみてください</p>
           </div>
         ) : (
-          filtered.map((article, i) => <NewsCard key={article.id} article={article} index={i} />)
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            {filtered.map((article, i) => (
+              <NewsCard
+                key={article.id}
+                article={article}
+                index={i}
+                featured={i === 0}
+              />
+            ))}
+          </div>
         )}
       </main>
 
       {/* Footer */}
-      <footer style={{ textAlign: "center", padding: "40px 20px 24px", borderTop: "1px solid #1a1a2e", marginTop: "20px" }}>
-        <p style={{ fontSize: "11px", color: "#334155", fontFamily: "var(--font-jetbrains-mono), monospace" }}>
-          NewsFlow • {filtered.length} articles
-          {lastFetched && ` • 最終取得: ${new Date(lastFetched).toLocaleString("ja-JP")}`}
+      <footer style={{ textAlign: "center", padding: "32px 20px 24px" }}>
+        <p style={{ fontSize: "12px", color: "#aeaeb2" }}>
+          {filtered.length}件の記事
+          {lastFetched && ` · ${new Date(lastFetched).toLocaleString("ja-JP", { month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" })} 更新`}
         </p>
       </footer>
     </>
