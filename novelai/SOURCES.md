@@ -41,6 +41,12 @@ NovelAI 変換キットの根拠とした参照元。タグ辞書・変換ルー
 - [NovelAI 5ch Wiki (seesaawiki)](https://seesaawiki.jp/nai_ch/)
 - [GIGAZINE — Danbooru タグまとめ](https://gigazine.net/gsc_news/en/20221119-danbooru-tag-novelai-waifu-diffusion/)
 - [aituts — The Complete NovelAI Prompt Guide](https://aituts.com/novelai-anime-prompt-techniques/)
+- **開発室RIN（rin87.com）** — 作例イラスト付きの日本語プロンプト集。ポーズ/表情/服装の語彙拡張に有用。
+  - [トップ（プロンプト集）](https://rin87.com/)
+  - [ポーズ用プロンプト集](https://rin87.com/sd-pose-prompt/)
+  - [表情用プロンプト集](https://rin87.com/sd-face-prompt/)
+  - [tagcomplete（タグ予測変換）の使い方](https://rin87.com/sd-tagcomplete/)
+  - 注: 直接の自動取得は 403（bot対策）でブロックされるため、検索サマリ経由で要点を記録。
 
 ## 補足
 
