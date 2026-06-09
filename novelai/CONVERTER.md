@@ -32,8 +32,10 @@
 4. **追加の服飾・露出**を続ける。
 5. **ポーズ配列** — `pose_candidates` から 6 件程度を `||A|B|C|...||` に（毎回変える。入力指定があれば先頭に）。
 6. **アングル配列** — `angle_candidates` から 5 件程度を `||A|B|C|...||` に。
-7. **背景・光・画風・rating** を必要時のみ。
-8. **固定ネガティブ** — `fixed_blocks.negative_fixed` を付与（基本そのまま）。
+7. **背景・光・画風・rating** を必要時のみ。**場所は空背景（何もない空間）にしない**：
+   未指定なら `fixed_blocks.background_default`（`scenery, detailed background`）を必ず付け、
+   `fixed_blocks.location_candidates`（屋内/屋外混在）から場所の可変配列 `||...||` を作る。場所指定があればそれを優先。
+8. **固定ネガティブ** — `fixed_blocks.negative_fixed` を付与（基本そのまま。末尾に空背景を弾く固定分を含む）。
 
 ## キャラブロック規約（キャラ差し替え用）
 
