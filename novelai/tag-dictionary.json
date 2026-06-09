@@ -31,7 +31,9 @@
     "kneeling", "lying down", "on back", "on stomach", "on side", "crouching", "squatting",
     "walking", "running", "jumping", "dancing", "stretching", "twisted torso",
     "looking back", "head tilt", "hugging own legs", "knees together feet apart",
-    "outstretched arm", "reaching towards viewer", "hands on lap", "covering mouth"
+    "outstretched arm", "reaching towards viewer", "hands on lap", "covering mouth",
+    "on couch", "on bed", "arm up", "arms up", "crossed legs", "upside-down",
+    "head back", "hair spread out", "hand near own head"
   ],
 
   "angle_candidates": [
@@ -39,7 +41,8 @@
     "dutch angle", "three-quarter view", "profile", "straight-on",
     "wide shot", "close-up", "portrait", "upper body", "cowboy shot", "full body",
     "pov", "fisheye", "perspective", "atmospheric perspective", "foreshortening",
-    "bird's-eye view", "worm's-eye view", "looking up", "looking down"
+    "bird's-eye view", "worm's-eye view", "looking up", "looking down",
+    "directly from above", "overhead shot"
   ],
 
   "subject_count": [
