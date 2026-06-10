@@ -58,17 +58,18 @@ NovelAI では先頭側のタグほど強く効く。本キットの並び順:
 ## 6. 固定ネガティブプロンプト（基本固定・必要に応じ加減）
 
 ```
-lowres, worst quality, low quality, normal quality, bad anatomy, bad hands, bad proportions, extra digits, fewer digits, missing fingers, fused fingers, one hand with more than 5 fingers, mutated hands and fingers, blurry, jpeg artifacts, signature, watermark, username, text, monochrome, greyscale, halftone, comic, sketch, spot color, limited palette, colored sclera, spiral, concentric circles, psychedelic, op art, retro artstyle, 1980s (style), loli, monster girl, simple background, white background, grey background, plain background, empty background, no background, transparent background, void
+loli, multiple breasts, [mutated hands and fingers:1.5 ], [long body :1.3], [mutation, poorly drawn :1.2] ,(Multi foot),((Multifold)),(Multi fingering), lowers, bad anatomy, bad hands, missing fingers, pubic hair, extra digit, fewer digits, cropped, worst quality, low quality, colored sclera, monster girl, Black hands, multiple breasts, mutated hands and fingers:1.5 , long body :1.3, [mutation, poorly drawn :1.2] , black-white, bad anatomy, The background is incoherent, more than 2 thighs, huge thighs, huge calf, bad hands, fused hand, missing hand, disappearing arms, disappearing thigh, disappearing calf, disappearing legs, missing fingers, fused fingers, one hand with more than 5 fingers, monochrome, greyscale, halftone, comic, sketch, spot color, limited palette, spiral, concentric circles, psychedelic, op art, retro artstyle, 1980s (style), simple background, white background, grey background, plain background, empty background, no background, transparent background, void
 ```
 
-- NovelAI V4/V4.5 用ネガ。SD 旧記法（`[tag:1.5]` / `(tag)`）は NovelAI で効かないため使わない。重みが要る時は `1.3::tag::` 形式。
-- **画風・色の矯正語（`monochrome, greyscale, halftone, comic, sketch, spot color, limited palette` ＋ 渦/レトロ系 `spiral, concentric circles, psychedelic, op art, retro artstyle, 1980s (style)`）は必須**。
-  これらを抜くと、**網点デュオトーン＋渦背景のレトロ催眠同人調**（肌が一色に潰れ、背景が同心円/縞）に転ぶ。
-- ⚠️ **最大の原因はネガではなくポジ側 `hypnosis` タグ**。`hypnosis` は渦背景・網点・レトロ画風を概念ごと引き込むため、
-  ネガで矯正しても勝てないことが多い。**催眠目を出したい時は `hypnosis` を使わず**、
-  `empty eyes, {{black pupils}}, blank stare, dilated pupils, expressionless, half-closed eyes` の組み合わせで虚ろ目を作る。
-  どうしても使うなら `[hypnosis]`（弱化）にし、背景を `indoors, detailed background` 等で具体指定して渦に埋めさせない。
-- NovelAI は**ネガ盛りすぎが逆効果**だが、上の画風矯正は残す。手指・解剖系は最小限に保つ。
+- これは**ユーザー実績ネガ（原型）＋ 画風ガード追加**。原型は実測で『渦/網点/レトロ催眠画風』を抑えており、
+  特に **`The background is incoherent` / `black-white` / `colored sclera`** が立役者。**この原型は削らない**
+  （SD旧記法を整理した軽量版に置換したら画風が破綻したため、原型尊重に戻した経緯）。
+- 後半に**画風ガード**（`monochrome, greyscale, halftone, comic, sketch, spot color, limited palette` ＋
+  渦/レトロ系 `spiral, concentric circles, psychedelic, op art, retro artstyle, 1980s (style)`）を追加して二重化。
+- ⚠️ **渦背景の最大原因はネガではなくポジ側 `hypnosis` タグ**。`hypnosis` は渦背景・網点・レトロ画風を概念ごと
+  引き込むため、ネガで矯正しても勝てないことが多い。**催眠目を出したい時は `hypnosis` を使わず**、
+  `empty eyes, {{black pupils}}, blank stare, dilated pupils, expressionless, half-closed eyes` で虚ろ目を作る。
+  どうしても使うなら `[hypnosis]`（弱化）にし、背景を `indoors, detailed background` 等で具体指定する。
 - 末尾の空背景抑制（`simple background`〜`void`）はキットの背景ルール用の固定分。
 
 ## 7. レーティング
