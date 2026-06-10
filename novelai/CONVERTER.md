@@ -28,6 +28,7 @@
 1. **ID** — 人数（`1girl` 等）＋固有名（キャラ名・作品名）。固有名は辞書に無くても Danbooru 表記で採用。
    キャラ固有要素は **キャラブロック**で囲う（→「キャラブロック規約」）。
 2. **外見** — 髪・目・表情・顔・服飾・小物・露出を `tag-dictionary.json` でマッピング。辞書に無い語は最近傍の Danbooru タグへ。象徴的な衣装・特徴は `{{...}}` で強調。
+   ⚠️ **催眠目は `hypnosis` を使わない**（渦背景・網点・レトロ画風を概念ごと引き込み、ネガで矯正しても勝てない）。代わりに `empty eyes, {{black pupils}}, blank stare, dilated pupils, expressionless, half-closed eyes` で虚ろ目を作る。`hypnosis_caveat` 参照。
 3. **固定品質ブロック** — `fixed_blocks.quality_fixed` をそのまま挿入（毎回同一）。
 4. **追加の服飾・露出**を続ける。
 5. **ポーズ配列** — `pose_candidates` から 6 件程度を `||A|B|C|...||` に（毎回変える。入力指定があれば先頭に）。
@@ -90,5 +91,5 @@ sinomiya runa, vspo, {{white sailor uniform}}, {{purple large ribbon}}, long sle
 
 **Negative:**
 ```
-lowres, worst quality, low quality, normal quality, bad anatomy, bad hands, bad proportions, extra digits, fewer digits, missing fingers, fused fingers, one hand with more than 5 fingers, mutated hands and fingers, blurry, jpeg artifacts, signature, watermark, username, text, monochrome, greyscale, halftone, comic, sketch, spot color, limited palette, colored sclera, loli, monster girl, simple background, white background, grey background, plain background, empty background, no background, transparent background, void
+lowres, worst quality, low quality, normal quality, bad anatomy, bad hands, bad proportions, extra digits, fewer digits, missing fingers, fused fingers, one hand with more than 5 fingers, mutated hands and fingers, blurry, jpeg artifacts, signature, watermark, username, text, monochrome, greyscale, halftone, comic, sketch, spot color, limited palette, colored sclera, spiral, concentric circles, psychedelic, op art, retro artstyle, 1980s (style), loli, monster girl, simple background, white background, grey background, plain background, empty background, no background, transparent background, void
 ```

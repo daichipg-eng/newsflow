@@ -58,12 +58,16 @@ NovelAI では先頭側のタグほど強く効く。本キットの並び順:
 ## 6. 固定ネガティブプロンプト（基本固定・必要に応じ加減）
 
 ```
-lowres, worst quality, low quality, normal quality, bad anatomy, bad hands, bad proportions, extra digits, fewer digits, missing fingers, fused fingers, one hand with more than 5 fingers, mutated hands and fingers, blurry, jpeg artifacts, signature, watermark, username, text, monochrome, greyscale, halftone, comic, sketch, spot color, limited palette, colored sclera, loli, monster girl, simple background, white background, grey background, plain background, empty background, no background, transparent background, void
+lowres, worst quality, low quality, normal quality, bad anatomy, bad hands, bad proportions, extra digits, fewer digits, missing fingers, fused fingers, one hand with more than 5 fingers, mutated hands and fingers, blurry, jpeg artifacts, signature, watermark, username, text, monochrome, greyscale, halftone, comic, sketch, spot color, limited palette, colored sclera, spiral, concentric circles, psychedelic, op art, retro artstyle, 1980s (style), loli, monster girl, simple background, white background, grey background, plain background, empty background, no background, transparent background, void
 ```
 
 - NovelAI V4/V4.5 用ネガ。SD 旧記法（`[tag:1.5]` / `(tag)`）は NovelAI で効かないため使わない。重みが要る時は `1.3::tag::` 形式。
-- **画風・色の矯正語（`monochrome, greyscale, halftone, comic, sketch, spot color, limited palette, colored sclera`）は必須**。
-  これを抜くと、`hypnosis` や暗め指定と噛み合って**漫画調/網点デュオトーン**（肌が一色に潰れる）に転びやすい。
+- **画風・色の矯正語（`monochrome, greyscale, halftone, comic, sketch, spot color, limited palette` ＋ 渦/レトロ系 `spiral, concentric circles, psychedelic, op art, retro artstyle, 1980s (style)`）は必須**。
+  これらを抜くと、**網点デュオトーン＋渦背景のレトロ催眠同人調**（肌が一色に潰れ、背景が同心円/縞）に転ぶ。
+- ⚠️ **最大の原因はネガではなくポジ側 `hypnosis` タグ**。`hypnosis` は渦背景・網点・レトロ画風を概念ごと引き込むため、
+  ネガで矯正しても勝てないことが多い。**催眠目を出したい時は `hypnosis` を使わず**、
+  `empty eyes, {{black pupils}}, blank stare, dilated pupils, expressionless, half-closed eyes` の組み合わせで虚ろ目を作る。
+  どうしても使うなら `[hypnosis]`（弱化）にし、背景を `indoors, detailed background` 等で具体指定して渦に埋めさせない。
 - NovelAI は**ネガ盛りすぎが逆効果**だが、上の画風矯正は残す。手指・解剖系は最小限に保つ。
 - 末尾の空背景抑制（`simple background`〜`void`）はキットの背景ルール用の固定分。
 
