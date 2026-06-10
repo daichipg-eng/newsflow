@@ -90,5 +90,5 @@ sinomiya runa, vspo, {{white sailor uniform}}, {{purple large ribbon}}, long sle
 
 **Negative:**
 ```
-loli, multiple breasts, [mutated hands and fingers:1.5 ], [long body :1.3], [mutation, poorly drawn :1.2] ,(Multi foot),((Multifold)),(Multi fingering), lowers, bad anatomy, bad hands, missing fingers, pubic hair, extra digit, fewer digits, cropped, worst quality, low quality, colored sclera, monster girl, Black hands, multiple breasts, mutated hands and fingers:1.5 , long body :1.3, [mutation, poorly drawn :1.2] , black-white, bad anatomy, The background is incoherent, more than 2 thighs, huge thighs, huge calf, bad hands, fused hand, missing hand, disappearing arms, disappearing thigh, disappearing calf, disappearing legs, missing fingers, fused fingers, one hand with more than 5 fingers
+lowres, worst quality, low quality, bad anatomy, bad hands, bad proportions, extra digits, fewer digits, missing fingers, fused fingers, one hand with more than 5 fingers, mutated hands and fingers, blurry, jpeg artifacts, signature, watermark, username, text, loli, monster girl, simple background, white background, grey background, plain background, empty background, no background, transparent background, void
 ```

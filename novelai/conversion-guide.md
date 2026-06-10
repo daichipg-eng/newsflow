@@ -58,10 +58,13 @@ NovelAI では先頭側のタグほど強く効く。本キットの並び順:
 ## 6. 固定ネガティブプロンプト（基本固定・必要に応じ加減）
 
 ```
-loli, multiple breasts, [mutated hands and fingers:1.5 ], [long body :1.3], [mutation, poorly drawn :1.2] ,(Multi foot),((Multifold)),(Multi fingering), lowers, bad anatomy, bad hands, missing fingers, pubic hair, extra digit, fewer digits, cropped, worst quality, low quality, colored sclera, monster girl, Black hands, multiple breasts, mutated hands and fingers:1.5 , long body :1.3, [mutation, poorly drawn :1.2] , black-white, bad anatomy, The background is incoherent, more than 2 thighs, huge thighs, huge calf, bad hands, fused hand, missing hand, disappearing arms, disappearing thigh, disappearing calf, disappearing legs, missing fingers, fused fingers, one hand with more than 5 fingers
+lowres, worst quality, low quality, bad anatomy, bad hands, bad proportions, extra digits, fewer digits, missing fingers, fused fingers, one hand with more than 5 fingers, mutated hands and fingers, blurry, jpeg artifacts, signature, watermark, username, text, loli, monster girl, simple background, white background, grey background, plain background, empty background, no background, transparent background, void
 ```
 
-- 原則このまま使う。状況に応じて末尾へ追加 / 不要分を削除して調整する。
+- NovelAI V4/V4.5 用の **軽量ネガ**。SD 旧記法（`[tag:1.5]` / `(tag)`）は NovelAI で効かないため使わない。
+  重みが要る時は `1.3::tag::` 形式で書く。
+- NovelAI は**ネガ盛りすぎが逆効果**になりやすいので、この粒度を既定とする。状況に応じて末尾へ追加 / 不要分を削除。
+- 末尾の空背景抑制（`simple background`〜`void`）はキットの背景ルール用の固定分。
 
 ## 7. レーティング
 
