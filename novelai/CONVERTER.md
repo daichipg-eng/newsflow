@@ -90,5 +90,5 @@ sinomiya runa, vspo, {{white sailor uniform}}, {{purple large ribbon}}, long sle
 
 **Negative:**
 ```
-lowres, worst quality, low quality, bad anatomy, bad hands, bad proportions, extra digits, fewer digits, missing fingers, fused fingers, one hand with more than 5 fingers, mutated hands and fingers, blurry, jpeg artifacts, signature, watermark, username, text, loli, monster girl, simple background, white background, grey background, plain background, empty background, no background, transparent background, void
+lowres, worst quality, low quality, normal quality, bad anatomy, bad hands, bad proportions, extra digits, fewer digits, missing fingers, fused fingers, one hand with more than 5 fingers, mutated hands and fingers, blurry, jpeg artifacts, signature, watermark, username, text, monochrome, greyscale, halftone, comic, sketch, spot color, limited palette, colored sclera, loli, monster girl, simple background, white background, grey background, plain background, empty background, no background, transparent background, void
 ```

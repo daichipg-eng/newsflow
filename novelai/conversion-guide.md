@@ -58,12 +58,13 @@ NovelAI では先頭側のタグほど強く効く。本キットの並び順:
 ## 6. 固定ネガティブプロンプト（基本固定・必要に応じ加減）
 
 ```
-lowres, worst quality, low quality, bad anatomy, bad hands, bad proportions, extra digits, fewer digits, missing fingers, fused fingers, one hand with more than 5 fingers, mutated hands and fingers, blurry, jpeg artifacts, signature, watermark, username, text, loli, monster girl, simple background, white background, grey background, plain background, empty background, no background, transparent background, void
+lowres, worst quality, low quality, normal quality, bad anatomy, bad hands, bad proportions, extra digits, fewer digits, missing fingers, fused fingers, one hand with more than 5 fingers, mutated hands and fingers, blurry, jpeg artifacts, signature, watermark, username, text, monochrome, greyscale, halftone, comic, sketch, spot color, limited palette, colored sclera, loli, monster girl, simple background, white background, grey background, plain background, empty background, no background, transparent background, void
 ```
 
-- NovelAI V4/V4.5 用の **軽量ネガ**。SD 旧記法（`[tag:1.5]` / `(tag)`）は NovelAI で効かないため使わない。
-  重みが要る時は `1.3::tag::` 形式で書く。
-- NovelAI は**ネガ盛りすぎが逆効果**になりやすいので、この粒度を既定とする。状況に応じて末尾へ追加 / 不要分を削除。
+- NovelAI V4/V4.5 用ネガ。SD 旧記法（`[tag:1.5]` / `(tag)`）は NovelAI で効かないため使わない。重みが要る時は `1.3::tag::` 形式。
+- **画風・色の矯正語（`monochrome, greyscale, halftone, comic, sketch, spot color, limited palette, colored sclera`）は必須**。
+  これを抜くと、`hypnosis` や暗め指定と噛み合って**漫画調/網点デュオトーン**（肌が一色に潰れる）に転びやすい。
+- NovelAI は**ネガ盛りすぎが逆効果**だが、上の画風矯正は残す。手指・解剖系は最小限に保つ。
 - 末尾の空背景抑制（`simple background`〜`void`）はキットの背景ルール用の固定分。
 
 ## 7. レーティング
