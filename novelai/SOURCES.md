@@ -47,6 +47,14 @@ NovelAI 変換キットの根拠とした参照元。タグ辞書・変換ルー
   - [表情用プロンプト集](https://rin87.com/sd-face-prompt/)
   - [tagcomplete（タグ予測変換）の使い方](https://rin87.com/sd-tagcomplete/)
   - 注: 直接の自動取得は 403（bot対策）でブロックされるため、検索サマリ経由で要点を記録。
+- **で、AIはなんて？（ai-nante.com）** — 服飾の装飾・部位ディテールの日本語プロンプト集。パイピング/フリル/レース等の語彙拡張に有用。
+  - [服の装飾プロンプト58集（piping/ruffle/lace 等）](https://ai-nante.com/ai-prompt-clothing-decoration/)
+  - [フリル付きの服プロンプト（位置指定の解説）](https://ai-nante.com/frills-prompt-guide/)
+  - [服の部位名称プロンプト一覧（襟・裾・袖ほか）](https://ai-nante.com/clothing-parts-prompts/)
+  - [トップス服44種プロンプト集（シャツ/ブラウス/ニット等）](https://ai-nante.com/tops-prompts/)
+- **UruruAILab（ururuailab.com）** — 装飾品・アクセサリーの日本語プロンプト一覧。ネックレス/イヤリング/チョーカー等の語彙拡張に有用。
+  - [装飾品・アクセサリー プロンプト一覧](https://ururuailab.com/accessories/)
+  - 注: ai-nante / ururuailab とも直接の自動取得は 403（bot対策）。検索サマリ経由で構成（服の装飾58種・アクセサリー一覧）を記録。
 
 ## 補足
 
