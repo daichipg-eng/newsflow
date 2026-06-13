@@ -32,7 +32,10 @@
 
 ## 辞書の拡張
 
-- 現在 **約 490 エントリ**（20カテゴリ：服飾装飾 `clothing_decoration` を含む）+ ポーズ/アングル候補を収録。
+- 現在 **約 750 エントリ**（31カテゴリ）+ ポーズ/アングル候補を収録。
+  アクセサリーは部位別に網羅（`hair_ornament` / `headwear` / `eyewear` / `earrings_and_piercings` /
+  `neckwear` / `hand_arm_accessories` / `body_waist_accessories` / `leg_accessories` /
+  `face_accessories` / `held_carried_items` / `tech_wearable` ＋ 旧 `accessories` / `clothing_decoration`）。
 - **足りない語は都度調べて [`tag-dictionary.json`](./tag-dictionary.json) に追記**して育てる方針。
   変換時に辞書に無い語が出たら、Claude がその場で Danbooru タグを調べて追加する。
 - JSON は `カテゴリ → [{ "ja": [...同義語], "tag": "danbooru tag" }, ...]` の単純構造で追記が容易。
