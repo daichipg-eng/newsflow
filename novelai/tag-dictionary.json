@@ -631,6 +631,7 @@
     { "ja": ["弾帯", "バンダリア"], "tag": "bandolier" },
     { "ja": ["サスペンダー", "吊りベルト", "ズボン吊り"], "tag": "suspenders" },
     { "ja": ["片サスペンダー", "片吊り"], "tag": "single suspender" },
+    { "ja": ["肩紐がズレる", "肩紐ずり落ち", "片方ズレたサスペンダー"], "tag": "strap slip" },
     { "ja": ["ボディハーネス"], "tag": "body harness" },
     { "ja": ["胸ハーネス"], "tag": "chest harness" },
     { "ja": ["IDカード", "社員証"], "tag": "id card" },
