@@ -4,7 +4,8 @@
     "target": "NovelAI Diffusion V4 / V4.5 (Danbooru系タグ)",
     "format": "小文字 / カンマ+スペース区切り / アンダースコアはスペース化",
     "note": "ja に無い語に遭遇したら都度調べて該当カテゴリへ追記する。エントリ形式 { ja:[...同義語], tag:\"danbooru tag\" }",
-    "expansion_policy": "可能な限り語彙を増やす。未知語は WebSearch/WebFetch で調べて追記する。"
+    "expansion_policy": "可能な限り語彙を増やす。未知語は WebSearch/WebFetch で調べて追記する。",
+    "research_logging_rule": "【必須ルール】何かを調べたら、その過程で出てきたタグのうち本辞書に未記録のものは必ず該当カテゴリへ追記する（種類・バリエーションを問わず取りこぼさない）。調べただけで記録しないのは禁止。"
   },
 
   "fixed_blocks": {
@@ -264,7 +265,12 @@
     { "ja": ["ショートパンツ", "短パン"], "tag": "shorts" },
     { "ja": ["ホットパンツ"], "tag": "short shorts" },
     { "ja": ["スパッツ", "レギンス"], "tag": "leggings" },
-    { "ja": ["オーバーオール"], "tag": "overalls" }
+    { "ja": ["オーバーオール"], "tag": "overalls" },
+    { "ja": ["オーバーオールショーツ", "ショートオーバーオール"], "tag": "overall shorts" },
+    { "ja": ["サロペットスカート", "ジャンパースカート", "サスペンダースカート"], "tag": "overall skirt" },
+    { "ja": ["サスペンダースカート(吊りスカート)"], "tag": "suspender skirt" },
+    { "ja": ["サスペンダーショーツ", "吊りズボン"], "tag": "suspender shorts" },
+    { "ja": ["レーダーホーゼン", "革半ズボン"], "tag": "lederhosen" }
   ],
 
   "clothing_swim_under": [
@@ -623,7 +629,8 @@
     { "ja": ["コサージュ"], "tag": "corsage" },
     { "ja": ["たすき掛けの帯", "サッシュ"], "tag": "sash" },
     { "ja": ["弾帯", "バンダリア"], "tag": "bandolier" },
-    { "ja": ["サスペンダー"], "tag": "suspenders" },
+    { "ja": ["サスペンダー", "吊りベルト", "ズボン吊り"], "tag": "suspenders" },
+    { "ja": ["片サスペンダー", "片吊り"], "tag": "single suspender" },
     { "ja": ["ボディハーネス"], "tag": "body harness" },
     { "ja": ["胸ハーネス"], "tag": "chest harness" },
     { "ja": ["IDカード", "社員証"], "tag": "id card" },
