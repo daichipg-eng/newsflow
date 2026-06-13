@@ -728,7 +728,27 @@
     { "ja": ["半裸"], "tag": "topless" },
     { "ja": ["濡れた服", "濡れ透け"], "tag": "wet clothes" },
     { "ja": ["透け", "透ける服"], "tag": "see-through" },
-    { "ja": ["はだけた服", "着崩し"], "tag": "open clothes" }
+    { "ja": ["はだけた服", "着崩し"], "tag": "open clothes" },
+    { "ja": ["シャツを開ける", "前を開けたシャツ"], "tag": "open shirt" },
+    { "ja": ["服を腰に巻く"], "tag": "clothes around waist" },
+    { "ja": ["服を首元に巻く", "首に巻いた服"], "tag": "clothes around neck" },
+    { "ja": ["服をずらす", "脇にずらす"], "tag": "clothing aside" },
+    { "ja": ["服を引っ張る", "服ずらし"], "tag": "clothes pull" },
+    { "ja": ["シャツを引っ張る"], "tag": "shirt pull" },
+    { "ja": ["シャツをめくる"], "tag": "shirt lift" }
+  ],
+
+  "skin_tone": [
+    { "ja": ["日焼け", "焼けた", "焼けた後", "小麦肌"], "tag": "tan" },
+    { "ja": ["日焼け跡", "焼け跡", "水着焼け線"], "tag": "tanlines" },
+    { "ja": ["褐色肌", "褐色の女の子", "黒ギャル肌"], "tag": "dark-skinned female" },
+    { "ja": ["褐色"], "tag": "dark skin" },
+    { "ja": ["水着の日焼け跡", "ビキニ焼け"], "tag": "bikini tan" },
+    { "ja": ["半袖焼け", "ファーマーズタン"], "tag": "farmer's tan" },
+    { "ja": ["まだらな日焼け", "ムラ焼け"], "tag": "uneven tan" },
+    { "ja": ["赤い日焼け", "ヒリヒリ日焼け"], "tag": "sunburn" },
+    { "ja": ["色白", "白い肌"], "tag": "pale skin" },
+    { "ja": ["小麦色の肌", "薄褐色"], "tag": "light brown skin" }
   ],
 
   "background_scenery": [
