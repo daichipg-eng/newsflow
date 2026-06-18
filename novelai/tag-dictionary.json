@@ -570,7 +570,24 @@
     { "ja": ["麻の葉模様"], "tag": "asanoha" },
     { "ja": ["雪の結晶柄"], "tag": "snowflake print" },
     { "ja": ["ロゴ入り", "文字プリント"], "tag": "logo" },
-    { "ja": ["刺繍"], "tag": "embroidery" }
+    { "ja": ["刺繍"], "tag": "embroidery" },
+    { "ja": ["緻密な模様", "複雑な模様"], "tag": "intricate pattern" },
+    { "ja": ["装飾過多", "豪華装飾"], "tag": "ornate" },
+    { "ja": ["ダマスク織"], "tag": "damask" },
+    { "ja": ["錦", "ブロケード"], "tag": "brocade" },
+    { "ja": ["金線細工", "フィリグリー", "唐草細工"], "tag": "filigree" },
+    { "ja": ["アラベスク"], "tag": "arabesque" },
+    { "ja": ["バロック装飾"], "tag": "baroque" },
+    { "ja": ["ロココ装飾"], "tag": "rococo" },
+    { "ja": ["曼荼羅", "マンダラ"], "tag": "mandala" },
+    { "ja": ["フラクタル"], "tag": "fractal" },
+    { "ja": ["トライバル"], "tag": "tribal" },
+    { "ja": ["ケルト結び", "ケルト文様"], "tag": "celtic knot" },
+    { "ja": ["唐草模様"], "tag": "karakusa (pattern)" },
+    { "ja": ["紗綾形", "卍繋ぎ"], "tag": "sayagata" },
+    { "ja": ["雲紋", "雲模様"], "tag": "cloud pattern" },
+    { "ja": ["龍柄", "竜模様"], "tag": "dragon print" },
+    { "ja": ["鳳凰柄", "フェニックス柄"], "tag": "phoenix print" }
   ],
 
   "hair_ornament": [
