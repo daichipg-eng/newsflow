@@ -761,7 +761,16 @@
     { "ja": ["ウォレットチェーン", "財布チェーン"], "tag": "wallet chain" },
     { "ja": ["ウエストポーチ"], "tag": "fanny pack" },
     { "ja": ["腰のケープ", "腰布"], "tag": "waist cape" },
-    { "ja": ["ベリーチェーン", "へそチェーン"], "tag": "belly chain" }
+    { "ja": ["ベリーチェーン", "へそチェーン"], "tag": "belly chain" },
+    { "ja": ["ウエストチェーン", "腰チェーン"], "tag": "waist chain" },
+    { "ja": ["ウエストニッパー", "ウエストシンチャー"], "tag": "waist cincher" },
+    { "ja": ["アンダーバストコルセット"], "tag": "underbust corset" },
+    { "ja": ["カマーバンド", "腹帯飾り"], "tag": "cummerbund" },
+    { "ja": ["腰エプロン", "ウエストエプロン"], "tag": "waist apron" },
+    { "ja": ["へそピアス"], "tag": "navel piercing" },
+    { "ja": ["お腹のタトゥー", "腹部タトゥー"], "tag": "stomach tattoo" },
+    { "ja": ["腹巻き", "はらまき"], "tag": "haramaki" },
+    { "ja": ["へそ出しトップス", "クロップ丈"], "tag": "crop top" }
   ],
 
   "leg_accessories": [
