@@ -226,7 +226,10 @@
     { "ja": ["半袖"], "tag": "short sleeves" },
     { "ja": ["ノースリーブ", "袖なし"], "tag": "sleeveless" },
     { "ja": ["パフスリーブ"], "tag": "puffy sleeves" },
-    { "ja": ["袖余り", "萌え袖"], "tag": "sleeves past wrists" }
+    { "ja": ["袖余り", "萌え袖"], "tag": "sleeves past wrists" },
+    { "ja": ["タートルネック", "ハイネック"], "tag": "turtleneck" },
+    { "ja": ["モックネック", "立ち襟ニット"], "tag": "mock turtleneck" },
+    { "ja": ["オフタートル", "ルーズタートル"], "tag": "off-shoulder turtleneck" }
   ],
 
   "clothing_dress_uniform": [
@@ -1011,6 +1014,8 @@
     { "ja": ["濡れた服", "濡れ透け"], "tag": "wet clothes" },
     { "ja": ["透け", "透ける服"], "tag": "see-through" },
     { "ja": ["はだけた服", "着崩し"], "tag": "open clothes" },
+    { "ja": ["鎖骨まで覆う", "首元まで生地"], "tag": "covered collarbone" },
+    { "ja": ["おへそも覆う", "腹部を覆う"], "tag": "covered navel" },
     { "ja": ["シャツを開ける", "前を開けたシャツ"], "tag": "open shirt" },
     { "ja": ["服を腰に巻く"], "tag": "clothes around waist" },
     { "ja": ["服を首元に巻く", "首に巻いた服"], "tag": "clothes around neck" },
