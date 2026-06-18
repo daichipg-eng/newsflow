@@ -783,6 +783,9 @@
     { "ja": ["足の指輪", "トゥリング"], "tag": "toe ring" },
     { "ja": ["ガーターストラップ", "ガーター"], "tag": "garter straps" },
     { "ja": ["太もものリボン"], "tag": "thigh ribbon" },
+    { "ja": ["片脚ガーター", "レッグガーター"], "tag": "leg garter" },
+    { "ja": ["垂れ下がるストラップ", "腰から下げる紐"], "tag": "hanging straps" },
+    { "ja": ["房飾り", "タッセル"], "tag": "tassel" },
     { "ja": ["ニーパッド", "膝当て"], "tag": "knee pads" },
     { "ja": ["レッグウォーマー"], "tag": "leg warmers" }
   ],
